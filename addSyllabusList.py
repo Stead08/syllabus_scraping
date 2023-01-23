@@ -4,16 +4,6 @@ import pprint
 import psycopg2
 import settings
 
-setting = settings.DATABASES['default']
-
-connection = psycopg2.connect(
-    host=setting['HOST'],
-    user=setting['USER'],
-    password=setting['PASSWORD'],
-    database=setting['DATABASE']
-
-)
-
 class SyllabusList:
     def __init__(self, classYear, category, subjectCode, numbering, lesson, instructor, grade, semester, dayOfWeek1, period1, dayOfWeek2, period2, subjectCategory, unitCategory):
         self.classYear = classYear
@@ -85,7 +75,7 @@ for i, table in enumerate(tables):
 
 
 # PostgreSQLへログイン
-setting = settings.DATABASES['default']
+setting = settings.DATABASES['test']
 
 connection = psycopg2.connect(
     host=setting['HOST'],
