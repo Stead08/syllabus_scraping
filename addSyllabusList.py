@@ -12,7 +12,6 @@ class SyllabusList:
         self.numbering = numbering
         self.lesson = lesson
         self.instructor = instructor
-        #grade is a list
         self.grade = grade
         self.semester = semester
         self.dayOfWeek1 = dayOfWeek1
@@ -54,6 +53,8 @@ for i, table in enumerate(tables):
         dayOfWeek1 = str(t_list[9].text)[0]
         period1 = int(str(t_list[9].text)[1])
     if len(t_list[9].text) == 5:
+        dayOfWeek1 = str(t_list[9].text)[0]
+        period1 = int(str(t_list[9].text)[1])
         dayOfWeek2 = str(t_list[9].text)[3]
         period2 = int(str(t_list[9].text)[4])
     Syllabus_list[i] = [classYear,
