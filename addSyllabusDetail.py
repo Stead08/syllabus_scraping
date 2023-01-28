@@ -58,32 +58,27 @@ for i, path in enumerate(path_list):
     # 現在の時刻
     date = datetime.datetime.now()
     registration_date = date
-    # 新カリの場合
+
+    # 旧カリの場合
     if "旧カリ" in lesson:
         #授業方法を取得
-        lesson_method_div = soup.select_one(".c-breadcrumbs > div:nth-child(4) > div:nth-child(1) > div:nth-child(2)")
-        # body > div > main > div > div > div:nth-child(3) > div > div.c-contents-body > div > p
-        # .c-breadcrumbs > div:nth-child(5) > div:nth-child(1) > div:nth-child(2)
-        # html.pc body div.c-wrapper main.c-container div.c-contents div.c-breadcrumbs div.c-expand div.c-box-shadow div.c-contents-body
+        lesson_method_div = soup.select_one("body > div.c-wrapper > main > div > div > div:nth-child(3) > div > div.c-contents-body")
         if lesson_method_div is None:
             pass
         else:
             lesson_method = lesson_method_div.text
         #講義情報をhtmlのまま取得
-        lesson_info_html = soup.select_one(".c-breadcrumbs > div:nth-child(5) > div:nth-child(1) > div:nth-child(2)")
+        lesson_info_html = soup.select_one("body > div.c-wrapper > main > div > div > div:nth-child(4) > div > div.c-contents-body")
         lesson_info_html = str(lesson_info_html)
-    # 旧カリの場合
+    # 新カリ(旧カリ以外）の場合
     else:
-        lesson_method_div = soup.select_one(".c-breadcrumbs > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)")
-        # body > div > main > div > div > div:nth-child(3) > div > div.c-contents-body > div > p
-        # .c-breadcrumbs > div:nth-child(5) > div:nth-child(1) > div:nth-child(2)
-        # html.pc body div.c-wrapper main.c-container div.c-contents div.c-breadcrumbs div.c-expand div.c-box-shadow div.c-contents-body
+        lesson_method_div = soup.select_one("body > div.c-wrapper > main > div > div > div:nth-child(4) > div > div.c-contents-body")
         if lesson_method_div is None:
             pass
         else:
             lesson_method = lesson_method_div.text
         # 講義情報をhtmlのまま取得
-        lesson_info_html = soup.select_one(".c-breadcrumbs > div:nth-child(4) > div:nth-child(1) > div:nth-child(2)")
+        lesson_info_html = soup.select_one("body > div.c-wrapper > main > div > div > div:nth-child(5) > div > div.c-contents-body")
         lesson_info_html = str(lesson_info_html)
 
 
